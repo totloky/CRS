@@ -9,9 +9,9 @@ import java.util.Locale;
 
 public class DBWorker {
     // JDBC URL, username and password of MySQL server
-    private static final String url = "jdbc:mysql://localhost:3306/auth_db_table";
-    private static final String user = "db_minecrafter";
-    private static final String password = "fAzPNVaWaKEEyQcj32";
+    private static final String url = "jdbc:mysql://localhost:3306/test";
+    private static final String user = "db_name";
+    private static final String password = "pass";
 
     // JDBC variables for opening and managing connection
     private static Connection con;
