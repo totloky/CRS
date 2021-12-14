@@ -44,14 +44,7 @@ public class DBWorker {
         }
 
         String query = "SELECT `" + stat.toUpperCase(Locale.ROOT) + "` FROM `stats` WHERE Login = '" + playerName + "'";
-
-
-        // opening database connection to MySQL server
-        //con = DriverManager.getConnection(url, user, password);
-
-        // getting Statement object to execute query
-        //stmt = con.createStatement();
-
+        
         // executing SELECT query
         rs = stmt.executeQuery(query);
 
