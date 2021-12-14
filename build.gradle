@@ -7,10 +7,16 @@ buildscript {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
     }
 }
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-
-version = "1.0"
+version = "1.1"
 group = "mod.totloky.crs"
 archivesBaseName = "CRS"
 
@@ -48,5 +54,5 @@ processResources {
 
 jar {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    from zipTree('libraries/' + archivesBaseName + '-' + version + '-with-libs.jar')
+    from zipTree('libs/' + archivesBaseName + '.jar')
 }

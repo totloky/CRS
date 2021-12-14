@@ -6,6 +6,8 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
+import java.sql.SQLException;
+
 @Mod(modid = CRS.MODID, name = CRS.NAME, version = CRS.VERSION, serverSideOnly = true, acceptableRemoteVersions = "*")
 public class CRS {
     public static final String MODID = "crs";
@@ -16,7 +18,7 @@ public class CRS {
     public static CommonProxy proxy;
 
     @EventHandler
-    public void serverStarting(FMLServerStartingEvent event) {
+    public void serverStarting(FMLServerStartingEvent event) throws SQLException {
         this.proxy.serverStarting(event);
     }
 }

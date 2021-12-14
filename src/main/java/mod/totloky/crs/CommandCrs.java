@@ -30,42 +30,54 @@ public class CommandCrs extends CommandBase {
     }
 
     @Override
-    public void execute(MinecraftServer server, ICommandSender sender,  String[] args) throws CommandException {
+    public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
         EntityPlayer player = getCommandSenderAsPlayer(sender);
-        String ErrorMassage = "Что-то пошло не так. Попробуйте /crs stats [player name]";
-
-        /*  /Crs Stats logic   */
-        if (args[0].contains("stats")) {
-            if (args.length == 2) {
-                try {
-                    player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Характеристики персонажа: '" + args[1] + "' \n" +
-                            TextFormatting.GOLD + "Сила: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("STR", args[1]) + TextFormatting.GOLD +  "]\n" +
-                            TextFormatting.GOLD + "Ловкость: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("DEX", args[1]) + TextFormatting.GOLD +  "]\n" +
-                            TextFormatting.GOLD + "Знания: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("KNO", args[1]) + TextFormatting.GOLD +  "]\n" +
-                            TextFormatting.GOLD + "Восприятие: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("PER", args[1]) + TextFormatting.GOLD +  "]\n" +
-                            TextFormatting.GOLD + "Выносливость: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("END", args[1]) + TextFormatting.GOLD +  "]\n" +
-                            TextFormatting.GOLD + "Магия: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("MAG", args[1]) + TextFormatting.GOLD +  "]" ));
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                    player.sendMessage(new TextComponentString(TextFormatting.RED + ErrorMassage));
-                }
-            }
-            else if (args.length == 1) {
-                try {
-                    player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Характеристики персонажа:\n" +
-                            TextFormatting.GOLD + "Сила: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("STR", player.getName()) + TextFormatting.GOLD +  "]\n" +
-                            TextFormatting.GOLD + "Ловкость: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("DEX", player.getName()) + TextFormatting.GOLD +  "]\n" +
-                            TextFormatting.GOLD + "Знания: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("KNO", player.getName()) + TextFormatting.GOLD +  "]\n" +
-                            TextFormatting.GOLD + "Восприятие: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("PER", player.getName()) + TextFormatting.GOLD +  "]\n" +
-                            TextFormatting.GOLD + "Выносливость: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("END", player.getName()) + TextFormatting.GOLD +  "]\n" +
-                            TextFormatting.GOLD + "Магия: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("MAG", player.getName()) + TextFormatting.GOLD +  "]" ));
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                    player.sendMessage(new TextComponentString(TextFormatting.RED + ErrorMassage));
-                }
-            }
+        String ErrorMassage = "Something went wrong. Check db connection or make sure that the Gradle configuration is correct.";
+        if (args.length == 0) {
+            player.sendMessage(new TextComponentString(TextFormatting.RED + "try /crs [command]"));
+            return;
         }
-        else {
+        /*  (/Crs Stats) logic  */
+        /*  (/Crs Stats [Nick]) */
+        if (args[0].contains("stats")) {
+            switch (args.length) {
+                case 2:
+                    try {
+                        player.sendMessage(new TextComponentString(TextFormatting.GOLD + "'" + args[1] + "' stats:" + "\n" +
+                                TextFormatting.GOLD + "STR: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("STR", args[1]) + TextFormatting.GOLD + "]\n" +
+                                TextFormatting.GOLD + "DEX: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("DEX", args[1]) + TextFormatting.GOLD + "]\n" +
+                                TextFormatting.GOLD + "KNO: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("KNO", args[1]) + TextFormatting.GOLD + "]\n" +
+                                TextFormatting.GOLD + "PER: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("PER", args[1]) + TextFormatting.GOLD + "]\n" +
+                                TextFormatting.GOLD + "END: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("END", args[1]) + TextFormatting.GOLD + "]\n" +
+                                TextFormatting.GOLD + "MAG: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("MAG", args[1]) + TextFormatting.GOLD + "]"));
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                        player.sendMessage(new TextComponentString(TextFormatting.RED + ErrorMassage));
+                    }
+                    break;
+                /*  (/Crs Stats */
+                case 1:
+                    try {
+                        player.sendMessage(new TextComponentString(TextFormatting.GOLD + "Your stats:\n" +
+                                TextFormatting.GOLD + "STR: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("STR", player.getName()) + TextFormatting.GOLD + "]\n" +
+                                TextFormatting.GOLD + "DEX: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("DEX", player.getName()) + TextFormatting.GOLD + "]\n" +
+                                TextFormatting.GOLD + "KNO: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("KNO", player.getName()) + TextFormatting.GOLD + "]\n" +
+                                TextFormatting.GOLD + "PER: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("PER", player.getName()) + TextFormatting.GOLD + "]\n" +
+                                TextFormatting.GOLD + "END: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("END", player.getName()) + TextFormatting.GOLD + "]\n" +
+                                TextFormatting.GOLD + "MAG: [" + TextFormatting.DARK_GREEN + DBWorker.getStat("MAG", player.getName()) + TextFormatting.GOLD + "]"));
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                        player.sendMessage(new TextComponentString(TextFormatting.RED + ErrorMassage));
+                    }
+                    break;
+
+
+                default:
+                    player.sendMessage(new TextComponentString(TextFormatting.RED + ErrorMassage));
+                    break;
+
+            }
+        } else {
             player.sendMessage(new TextComponentString(TextFormatting.RED + ErrorMassage));
         }
     }
