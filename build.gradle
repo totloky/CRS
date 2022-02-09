@@ -12,17 +12,26 @@ repositories {
     flatDir {
         dirs 'libs'
     }
+    maven {
+        url 'https://repo.clojars.org'
+        name 'Clojars'
+    }
 }
 
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "1.1"
+version = "1.0"
 group = "mod.totloky.crs"
 archivesBaseName = "CRS"
 
 sourceCompatibility = targetCompatibility = '1.8'
 compileJava {
     sourceCompatibility = targetCompatibility = '1.8'
+}
+compileJava.options.encoding = "UTF-8"
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
 }
 
 minecraft {
