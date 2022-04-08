@@ -17,9 +17,15 @@ public class CRS {
     public static final String MODID = "crs";
     public static final String NAME = "CRS";
     public static final String VERSION = "1.1";
+
     @SidedProxy(serverSide = "mod.totloky.crs.proxy.CommonProxy", clientSide = "mod.totloky.crs.proxy.ClientProxy")
     public static CommonProxy commonProxy;
     public static ClientProxy clientProxy;
+
+    @EventHandler
+    public void commonPreInit(FMLPreInitializationEvent event) {
+        commonProxy.commonPreInit(event);
+    }
 
     @EventHandler
     @SideOnly(Side.SERVER)
