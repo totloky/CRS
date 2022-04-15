@@ -58,6 +58,7 @@ public class StatsStorage {
                 {
                     NBTTagCompound tag = (NBTTagCompound)nbt;
 
+                    // !!! FIX THIS REALISATION !!! TODO
                     instance.set(tag.getString("STR"), "0");
                     instance.set(tag.getString("DEX"), "0");
                     instance.set(tag.getString("KNO"), "0");
@@ -65,7 +66,6 @@ public class StatsStorage {
                     instance.set(tag.getString("END"), "0");
                     instance.set(tag.getString("MAG"), "0");
 
-                    //instance.set(tag.getString("any"), "any");
                     System.out.println(tag);
                 }
             }
@@ -92,7 +92,8 @@ public class StatsStorage {
             }
         }
 
-        /*@SubscribeEvent
+        /* TODO
+        @SubscribeEvent
         public static void playerClone(final PlayerEvent.Clone event) {
             final IStat oldMana = getStats(event.getOriginal());
             final IStat newMana = getStats(event.getEntityPlayer());
@@ -103,14 +104,18 @@ public class StatsStorage {
             }
         }*/
 
+
+        // this method is load the player's actual stats from the database into nbt
         @SideOnly(Side.SERVER)
         @SubscribeEvent
         public static void onPlayerLogsIn(PlayerEvent.PlayerLoggedInEvent event) throws SQLException {
+            // !!! FIX THIS REALISATION !!! TODO
             MySQLHandler.dbOpenConnection();
 
             EntityPlayer player = event.player;
             String name = player.getName();
             IStat stats = player.getCapability(STATS_CAPABILITY, null);
+            // !!! FIX THIS REALISATION !!! TODO
             stats.setCurrent("STR", name);
             stats.setCurrent("DEX", name);
             stats.setCurrent("KNO", name);

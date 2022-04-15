@@ -1,16 +1,23 @@
 package mod.totloky.crs.gui;
 
-import net.minecraft.client.Minecraft;
+import mod.totloky.crs.network.PacketManager;
+import mod.totloky.crs.network.StatRequestPacket;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 
+
+
 public class KeyInputHandler {
+    
+
     @SubscribeEvent
     public void onKeyInput (InputEvent.KeyInputEvent event)
     {
-        if (KeyBinder.gui.isPressed())
+
+        if (KeyBinder.guiKey.isPressed())
         {
-            Minecraft.getMinecraft().displayGuiScreen(new CharacterPassGui());
+            StatRequestPacket message = new StatRequestPacket();
+            PacketManager.INSTANCE.sendToServer(message);
         }
     }
 }

@@ -1,19 +1,21 @@
 package mod.totloky.crs.gui;
 
-import mod.totloky.crs.nbt.IStat;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
-import static mod.totloky.crs.nbt.StatsStorage.STATS_CAPABILITY;
-
 public class CharacterPassGui extends GuiScreen {
+
+    private int[] statsArray;
 
     public final int guiWidth = 130;
     public final int guiHeight = 170;
     private static ResourceLocation PASS_GUI_TEXTURE =  new ResourceLocation("crs","textures/gui/pass.png");
 
     public CharacterPassGui() {
+    }
+
+    public CharacterPassGui(int[] statsArray) {
+        this.statsArray = statsArray;
     }
 
     @Override
@@ -24,12 +26,14 @@ public class CharacterPassGui extends GuiScreen {
 
     @Override
     public void drawScreen(int w, int h, float p_73863_3_) {
-        EntityPlayer player = mc.player;
-        IStat stats = player.getCapability(STATS_CAPABILITY, null);
-        String message = stats.get("strength");
 
         mc.getTextureManager().bindTexture(PASS_GUI_TEXTURE);
         drawTexturedModalRect((width-guiWidth)/2, (height-guiHeight)/2-20, 0, 0, guiWidth, guiHeight);
-        fontRenderer.drawString("magic: " + message, (width-guiWidth)/2+guiWidth-50, 170, 990000);
+        fontRenderer.drawString("str: " + statsArray[0], (width-guiWidth)/2+guiWidth-100, 100, 990000);
+        fontRenderer.drawString("dex: " + statsArray[1], (width-guiWidth)/2+guiWidth-100, 120, 990000);
+        fontRenderer.drawString("kno: " + statsArray[2], (width-guiWidth)/2+guiWidth-100, 140, 990000);
+        fontRenderer.drawString("per: " + statsArray[3], (width-guiWidth)/2+guiWidth-100, 160, 990000);
+        fontRenderer.drawString("end: " + statsArray[4], (width-guiWidth)/2+guiWidth-100, 180, 990000);
+        fontRenderer.drawString("mag: " + statsArray[5], (width-guiWidth)/2+guiWidth-100, 80, 990000);
     }
 }

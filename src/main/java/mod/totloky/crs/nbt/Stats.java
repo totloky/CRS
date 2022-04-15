@@ -25,29 +25,25 @@ public class Stats implements IStat {
         magic = "0";
     }
 
+
     @Override
     public void set(String stat, String points) {
         switch(stat.toUpperCase(Locale.ROOT)) {
             case "STR":
                 this.strength = points;
                 break;
-
             case "DEX":
                 this.dexterity = points;
                 break;
-
             case "KNO":
                 this.knowledge = points;
                 break;
-
             case "PER":
                 this.perception = points;
                 break;
-
             case "END":
                 this.endurance = points;
                 break;
-
             case "MAG":
                 this.magic = points;
                 break;
@@ -59,22 +55,16 @@ public class Stats implements IStat {
         switch(stat) {
             case "STR":
                 return this.strength;
-
             case "DEX":
                 return this.dexterity;
-
             case "KNO":
                 return this.knowledge;
-
             case "PER":
                 return this.perception;
-
             case "END":
                 return this.endurance;
-
             case "MAG":
                 return this.magic;
-
             default:
                 return "0";
         }
@@ -82,8 +72,8 @@ public class Stats implements IStat {
 
     @SideOnly(Side.SERVER)
     @Override
-    public String getCurrent(String stat) throws SQLException {
-        return MySQLHandler.getStat(stat, "Odis");
+    public String getCurrent(String stat, String playerName) throws SQLException {
+        return MySQLHandler.getStat(stat, playerName);
     }
 
     @SideOnly(Side.SERVER)
@@ -93,19 +83,14 @@ public class Stats implements IStat {
         switch (stat) {
             case "STR":
                 strength = dbStat;
-
             case "DEX":
                 dexterity = dbStat;
-
             case "KNO":
                 knowledge = dbStat;
-
             case "PER":
                 perception = dbStat;
-
             case "END":
                 endurance = dbStat;
-
             case "MAG":
                 magic = dbStat;
         }

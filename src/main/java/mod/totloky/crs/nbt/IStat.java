@@ -12,7 +12,7 @@ public interface IStat {
     String get(String stat);
 
     @SideOnly(Side.SERVER)
-    String getCurrent(String stat) throws SQLException;
+    String getCurrent(String stat, String playerName) throws SQLException;
 
     @SideOnly(Side.SERVER)
     void setCurrent(String stat, String name) throws SQLException;

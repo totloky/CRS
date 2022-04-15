@@ -7,12 +7,12 @@ import org.lwjgl.input.Keyboard;
 
 public class KeyBinder {
 
-    public static KeyBinding gui;
+    public static KeyBinding guiKey;
 
     public static void register()
     {
-        gui = new KeyBinding("key.gui", Keyboard.KEY_P, "key.categories.mhq");
-        ClientRegistry.registerKeyBinding(gui);
+        guiKey = new KeyBinding("key.gui", Keyboard.KEY_P, "key.categories.mhq");
+        ClientRegistry.registerKeyBinding(guiKey);
 
         MinecraftForge.EVENT_BUS.register(new KeyInputHandler());
     }

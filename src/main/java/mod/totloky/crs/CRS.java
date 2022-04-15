@@ -22,6 +22,7 @@ public class CRS {
     public static CommonProxy commonProxy;
     public static ClientProxy clientProxy;
 
+
     @EventHandler
     public void commonPreInit(FMLPreInitializationEvent event) {
         commonProxy.commonPreInit(event);

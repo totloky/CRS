@@ -9,7 +9,6 @@ public class ClientProxy extends CommonProxy{
     public static void clientPreInit(FMLPreInitializationEvent event)
     {
         KeyBinder.register();
-
         MinecraftForge.EVENT_BUS.register(new KeyInputHandler());
     }
 }
