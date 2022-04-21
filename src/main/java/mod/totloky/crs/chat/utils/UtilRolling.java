@@ -8,7 +8,7 @@ public class UtilRolling {
         int random;
         int sum = 0;
 
-        if (tokens[0].equals("") || tokens[0].equals("1")) /*Integer.parseInt(tokens[0])<=10)*/ {
+        if (tokens[0].equals("") || tokens[0].equals("1")) {
             random = diceRolling(Integer.parseInt(tokens[1]));
             Result.append("[").append(random).append("]=").append(random);
         } else {
