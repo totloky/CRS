@@ -3,6 +3,7 @@ package mod.totloky.crs.proxy;
 import mod.totloky.crs.CommandCrs;
 import mod.totloky.crs.ConfigManager;
 import mod.totloky.crs.MySQLHandler;
+import mod.totloky.crs.blocks.BlocksRegister;
 import mod.totloky.crs.nbt.InitCapabilities;
 import mod.totloky.crs.network.PacketManager;
 import net.minecraftforge.fml.common.Mod;
@@ -20,6 +21,7 @@ public class CommonProxy {
     public void commonPreInit(FMLPreInitializationEvent event) {
         InitCapabilities.registerCapabilities();
         PacketManager.registerPacketList();
+        BlocksRegister.register();
     }
 
     @Mod.EventHandler

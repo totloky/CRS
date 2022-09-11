@@ -157,7 +157,7 @@ public class CommandCrs extends CommandBase {
 
     public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
 
-        return sender instanceof EntityPlayer ? server.getPlayerList().canSendCommands(((EntityPlayer) sender).getGameProfile()) : false;//Если игрок опнут (opped), то он может использовать команду
+        return sender instanceof EntityPlayer ? server.getPlayerList().canSendCommands(((EntityPlayer) sender).getGameProfile()) : false;
     }
 
 
