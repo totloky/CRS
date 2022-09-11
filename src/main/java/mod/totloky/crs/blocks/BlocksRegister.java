@@ -22,7 +22,7 @@ public class BlocksRegister {
 
     private static void setRegister(Block block) {
         ForgeRegistries.BLOCKS.register(block);
-        ForgeRegistries.ITEMS.register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
+        ForgeRegistries.ITEMS.register(new ItemBlock(block).setRegistryName(block.getUnlocalizedName()));
     }
 
     @SideOnly(Side.CLIENT)
