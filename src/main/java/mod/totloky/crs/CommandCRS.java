@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class CommandCrs extends CommandBase {
+public class CommandCRS extends CommandBase {
 
     public static final String NAME = "crs".toLowerCase(), USAGE = "/crs".toLowerCase();
 

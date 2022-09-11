@@ -1,6 +1,6 @@
 package mod.totloky.crs.proxy;
 
-import mod.totloky.crs.CommandCrs;
+import mod.totloky.crs.CommandCRS;
 import mod.totloky.crs.ConfigManager;
 import mod.totloky.crs.MySQLHandler;
 import mod.totloky.crs.blocks.BlocksRegister;
@@ -22,6 +22,7 @@ public class CommonProxy {
         InitCapabilities.registerCapabilities();
         PacketManager.registerPacketList();
         BlocksRegister.register();
+        BlocksRegister.registerRender();
     }
 
     @Mod.EventHandler
@@ -32,6 +33,6 @@ public class CommonProxy {
         // init db connection at server starting
         MySQLHandler.dbOpenConnection();
         // crs command registration
-        event.registerServerCommand(new CommandCrs());
+        event.registerServerCommand(new CommandCRS());
     }
 }
