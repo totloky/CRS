@@ -3,7 +3,7 @@ package mod.totloky.crs.gui;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ResourceLocation;
 
-public class CharacterPassGui extends GuiScreen {
+public class GuiCharacterPass extends GuiScreen {
 
     private int[] statsArray;
 
@@ -11,10 +11,10 @@ public class CharacterPassGui extends GuiScreen {
     public final int guiHeight = 170;
     private static ResourceLocation PASS_GUI_TEXTURE =  new ResourceLocation("crs","textures/gui/pass.png");
 
-    public CharacterPassGui() {
+    public GuiCharacterPass() {
     }
 
-    public CharacterPassGui(int[] statsArray) {
+    public GuiCharacterPass(int[] statsArray) {
         this.statsArray = statsArray;
     }
 
@@ -26,7 +26,7 @@ public class CharacterPassGui extends GuiScreen {
 
     @Override
     public void drawScreen(int w, int h, float p_73863_3_) {
-
+        this.drawDefaultBackground();
         mc.getTextureManager().bindTexture(PASS_GUI_TEXTURE);
         drawTexturedModalRect((width-guiWidth)/2, (height-guiHeight)/2-20, 0, 0, guiWidth, guiHeight);
         fontRenderer.drawString("str: " + statsArray[0], (width-guiWidth)/2+guiWidth-100, 100, 990000);

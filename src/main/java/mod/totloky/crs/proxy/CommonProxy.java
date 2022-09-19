@@ -7,6 +7,7 @@ import mod.totloky.crs.blocks.BlocksRegister;
 import mod.totloky.crs.nbt.InitCapabilities;
 import mod.totloky.crs.network.PacketManager;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
@@ -15,14 +16,11 @@ import java.sql.SQLException;
 public class CommonProxy {
 
 
-
-
     @Mod.EventHandler
     public void commonPreInit(FMLPreInitializationEvent event) {
         InitCapabilities.registerCapabilities();
         PacketManager.registerPacketList();
         BlocksRegister.register();
-        BlocksRegister.registerRender();
     }
 
     @Mod.EventHandler
@@ -34,5 +32,8 @@ public class CommonProxy {
         MySQLHandler.dbOpenConnection();
         // crs command registration
         event.registerServerCommand(new CommandCRS());
+    }
+
+    public static void init(FMLInitializationEvent event) {
     }
 }
