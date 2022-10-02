@@ -1,5 +1,6 @@
 package mod.totloky.crs.blocks;
 
+import mod.totloky.crs.chat.utils.GuiHelper;
 import mod.totloky.crs.gui.GuiFarmBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -48,7 +49,7 @@ public class FarmBlock extends BlockContainer {
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         TileEntity tileentity = worldIn.getTileEntity(pos);
         if (tileentity instanceof TileEntityFarmBlock && playerIn.canUseCommandBlock()) {
-            Minecraft.getMinecraft().displayGuiScreen(new GuiFarmBlock((TileEntityFarmBlock) tileentity));
+            GuiHelper.farmAssistant((TileEntityFarmBlock) tileentity);
         }
         else {
             giveFarmLoot(playerIn);

@@ -1,6 +1,6 @@
 package mod.totloky.crs.network;
 
-import mod.totloky.crs.gui.NetworkHelper;
+import mod.totloky.crs.chat.utils.GuiHelper;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -12,7 +12,7 @@ public class AnswerPacketHandler implements IMessageHandler<StatAnswerPacket, IM
     public IMessage onMessage(StatAnswerPacket message, MessageContext ctx) {
 
         int[] amount = message.getToSend();
-        NetworkHelper.PacketAssistant(amount);
+        GuiHelper.packetAssistant(amount);
 
         return null;
     }

@@ -6,7 +6,7 @@ import net.minecraftforge.fml.relauncher.Side;
 
 public class PacketManager {
 
-    public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel("CRS");
+    public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel("CRS|DEFAULT_CHANNEL");
 
     public static void registerPacketList() {
         int i=0;
