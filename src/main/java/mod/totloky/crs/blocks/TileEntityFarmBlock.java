@@ -2,17 +2,11 @@ package mod.totloky.crs.blocks;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
 
 public class TileEntityFarmBlock extends TileEntity {
 
     private String parentTextureStored = "";
     private String recourseTypeStored = "";
-
-    public BlockPos getPosition()
-    {
-        return TileEntityFarmBlock.this.pos;
-    }
 
     public NBTTagCompound writeToNBT(String parentTextureStored, String recourseTypeStored) {
         this.recourseTypeStored = recourseTypeStored;
@@ -37,15 +31,5 @@ public class TileEntityFarmBlock extends TileEntity {
         return this.recourseTypeStored;
     }
 
-    /*@SideOnly(Side.CLIENT)
-    public void fillInInfo(ByteBuf buf)
-    {
-        buf.writeInt(TileEntityFarmBlock.this.pos.getX());
-        buf.writeInt(TileEntityFarmBlock.this.pos.getY());
-        buf.writeInt(TileEntityFarmBlock.this.pos.getZ());
-    }*/
-
-
-
-    TileEntityFarmBlock() { super(); }
+    public TileEntityFarmBlock() { super(); }
 }

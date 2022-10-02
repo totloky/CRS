@@ -1,6 +1,6 @@
 package mod.totloky.crs.network;
 
-import mod.totloky.crs.chat.utils.GuiHelper;
+import mod.totloky.crs.utils.GuiHelper;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;

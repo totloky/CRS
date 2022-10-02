@@ -1,4 +1,4 @@
-package mod.totloky.crs.chat.utils;
+package mod.totloky.crs.utils;
 
 import mod.totloky.crs.blocks.TileEntityFarmBlock;
 import mod.totloky.crs.gui.GuiCharacterPass;
@@ -15,5 +15,4 @@ public class GuiHelper {
     public static void farmAssistant(TileEntityFarmBlock farmBlockIn) {
         Minecraft.getMinecraft().displayGuiScreen(new GuiFarmBlock((TileEntityFarmBlock) farmBlockIn));
     }
-
 }

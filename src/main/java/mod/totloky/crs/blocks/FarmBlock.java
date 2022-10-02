@@ -1,30 +1,23 @@
 package mod.totloky.crs.blocks;
 
-import mod.totloky.crs.chat.utils.GuiHelper;
-import mod.totloky.crs.gui.GuiFarmBlock;
-import net.minecraft.block.Block;
+import mod.totloky.crs.blocks.farms.FarmLogic;
+import mod.totloky.crs.utils.GuiHelper;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityCommandBlock;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import javax.annotation.Nonnull;
-import java.util.Objects;
-
 public class FarmBlock extends BlockContainer {
+
+
 
     public FarmBlock(Material blockMaterialIn, MapColor blockMapColorIn) {
         super(blockMaterialIn, blockMapColorIn);
@@ -48,18 +41,19 @@ public class FarmBlock extends BlockContainer {
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         TileEntity tileentity = worldIn.getTileEntity(pos);
-        if (tileentity instanceof TileEntityFarmBlock && playerIn.canUseCommandBlock()) {
-            GuiHelper.farmAssistant((TileEntityFarmBlock) tileentity);
+        if (tileentity instanceof TileEntityFarmBlock) {
+            if (playerIn.canUseCommandBlock()) {
+                GuiHelper.farmAssistant((TileEntityFarmBlock) tileentity);
+            } else {
+                giveFarmLoot(playerIn, (TileEntityFarmBlock) tileentity);
+            }
+            return true;
         }
-        else {
-            giveFarmLoot(playerIn);
-        }
-        return true;
+        return false;
     }
 
-
-    private void giveFarmLoot(EntityPlayer playerIn) {
-        playerIn.inventory.addItemStackToInventory(new ItemStack(Objects.requireNonNull(Item.getByNameOrId("minecraft:diamond"))));
+    private void giveFarmLoot(EntityPlayer playerIn, TileEntityFarmBlock tileEntityFarmBlock) {
+        playerIn.inventory.addItemStackToInventory(FarmLogic.farmConsumer(tileEntityFarmBlock.getTypeStored()));
     }
 
     @Override

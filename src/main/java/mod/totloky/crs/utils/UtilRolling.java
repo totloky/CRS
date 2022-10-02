@@ -1,4 +1,4 @@
-package mod.totloky.crs.chat.utils;
+package mod.totloky.crs.utils;
 
 public class UtilRolling {
 
